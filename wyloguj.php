@@ -10,7 +10,7 @@ include 'zakladki.php';
 echo "<div id='tresc'>";
 if($_SESSION['login'] != ""){
     echo "Pomyślnie wylogowano użytkownika ".$_SESSION['login'];
-    unset($_SESSION['login']);
+    session_destroy();
     header("Location: listaBlogow.php");
 }else{
     header("Location: listaBlogow.php");

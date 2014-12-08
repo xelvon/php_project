@@ -28,7 +28,7 @@ if($_GET['zapisz'] == ""){
 			<td>Opis bloga</td><td><textarea name='opis'/></textarea></td>
 		</tr>
 		<tr>
-			<td colspan='2'><button style='float: right;' type='submit' name='zapisz' value='zapisz'>Zapisz</button></td>
+			<td colspan='2'><button style='float: right;' type='submit' name='zapisz' value='zapisz'>Zapisz</button><input type='reset' value='Wyczyść' style='float: right; margin-right: 1px;' /></td>
 		</tr>";
 
 	echo "</table></form>"; 

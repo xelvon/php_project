@@ -1,7 +1,8 @@
 <?php
 include 'goraStrony.php';
     
-    $file = file("blogi/".$_SESSION['nazwa_bloga']."/info.txt");
+    $file = file("blogi/".$_GET['blog']."/info.txt");
+    var_dump($_SESSION['nazwa_bloga']);
     $owner = trim($file[0]);
     for($i=2;$i<count($file);$i++)
         if($i == 2)
@@ -20,7 +21,7 @@ echo "<div id='tresc'>";
     echo $opisBloga;
     echo "</div>";
     
-    $plikKomentowany = file("blogi/".$_SESSION['nazwa_bloga']."/".$_GET['wpis'].".OOO");
+    $plikKomentowany = file("blogi/".$_GET['blog']."/".$_GET['wpis'].".w");
     $wpis['nazwa'] = $_GET['wpis'];
     $wpis['data'] = substr($wpis['nazwa'],0,4).".".substr($wpis['nazwa'],4,2).".".substr($wpis['nazwa'],6,2)." ".substr($wpis['nazwa'],8,2).":".substr($wpis['nazwa'],10,2).":".substr($wpis['nazwa'],12,2);
     $wpis['kto_dodal'] = $owner;
@@ -42,7 +43,7 @@ if($_POST['opis'] == ""){
                 <input type='hidden' name='nazwa_wpisu' value='".$_GET['wpis']."'>
 		<table>
                 <tr>
-                    <td>Rodzaj komentarza</td><td><select name='rodzaj'><option value='pozytywny'>Pozytywny</option><option value='negatywny'>Negatywny</negatywny></select></td>
+                    <td>Rodzaj komentarza</td><td><select name='rodzaj'><option value='pozytywny'>Pozytywny</option><option value='neutralny'>Neutralny</negatywny><option value='negatywny'>Negatywny</negatywny></select></td>
                 </tr>
 		<tr>";
         if(!isset($_SESSION['login']))
@@ -54,7 +55,7 @@ if($_POST['opis'] == ""){
 			<td>Tresc komentarza</td><td><textarea name='opis'/></textarea></td>
 		</tr>
 		<tr>
-			<td style='text-align: right;' colspan='2'><button style='margin:3px;' type='reset' name='wyczysc' value='wyczysc'>Wyczysc</button><button type='submit' name='zapisz' value='zapisz'>Wyślij</button></td>
+			<td style='text-align: right;' colspan='2'><input type='reset' value='Wyczyść' style=' margin-right: 1px;' /><button type='submit' name='zapisz' value='zapisz'>Wyślij</button></td>
 		</tr>";
 
 	echo "</table></form>"; 

@@ -31,15 +31,15 @@ if(is_dir("blogi/".$nazwaBloga) && $nazwaBloga != NULL){
         $blogOwner = trim($plikInfo[0]);
         $indeks = 0;
         foreach($lista as $key=>$value){
-            if($key > 1 && strpos($value,".OOO") > 0){
+            if($key > 1 && strpos($value,".w") > 0){
                 $file = file("blogi/".$_SESSION['nazwa_bloga']."/$value");
-                $iloscKomentarzy = scandir("blogi/".$_SESSION['nazwa_bloga']."/".substr($value,0,-4).".k");
+                $iloscKomentarzy = scandir("blogi/".$_SESSION['nazwa_bloga']."/".substr($value,0,-2).".k");
                 if($iloscKomentarzy != false)
                     $iloscKomentarzy = count($iloscKomentarzy) - 2;
                 else
                     $iloscKomentarzy = 0;
                 
-                $wpis[$indeks]['nazwa'] = substr($value,0,-4);
+                $wpis[$indeks]['nazwa'] = substr($value,0,-2);
                 $wpis[$indeks]['data'] = substr($value,0,4).".".substr($value,4,2).".".substr($value,6,2)." ".substr($value,8,2).":".substr($value,10,2).":".substr($value,12,2);
                 $wpis[$indeks]['kto_dodal'] = $blogOwner;
                 $wpis[$indeks]['ile_komentarzy'] = $iloscKomentarzy;
@@ -58,7 +58,7 @@ if(is_dir("blogi/".$nazwaBloga) && $nazwaBloga != NULL){
                     echo $value['tresc'];
                 echo "</div>";
                 echo "<div id='dol_wpisu'>";
-                    echo "<a style='cursor: pointer' id='wyswietl_komentarze' href='komentarze.php?nazwa=".$_SESSION['nazwa_bloga']."&wpis=".$value['nazwa']."'>Komentarzy(".$value['ile_komentarzy'].")</a>";
+                    echo "<a style='cursor: pointer' id='wyswietl_komentarze' href='komentarze.php?blog=".$_SESSION['nazwa_bloga']."&wpis=".$value['nazwa']."'>Komentarzy(".$value['ile_komentarzy'].")</a>";
                     echo "<a id='dodaj_komentarz' href='koment.php?wpis=".$value['nazwa']."&blog=".$_SESSION['nazwa_bloga']."'>Dodaj komentarz</a>";
                 echo "</div>";
             echo "</div>";
@@ -67,7 +67,7 @@ if(is_dir("blogi/".$nazwaBloga) && $nazwaBloga != NULL){
     echo "</div>";
     
         if($_SESSION['login'] == $owner){
-            echo "<a id='dodaj_wpis' href='wpis.php'>Dodaj wpis</a>";
+            echo "<a id='dodaj_wpis' href='wpisZalogowany.php'>Dodaj wpis</a>";
         }
         
     echo "</div>";

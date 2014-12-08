@@ -2,7 +2,7 @@
 include 'goraStrony.php';
 
 echo "<div id='tytul'>
-        	Lista założonych blogów
+        	Logowaie
       </div>";
 
 include 'zakladki.php';
@@ -22,7 +22,7 @@ if($_POST['login'] == "" && $_POST['haslo'] == ""){
 			<td>Hasło</td><td><input type='password' name='haslo'/></td>
 		</tr>
 		<tr>
-			<td colspan='2'><button type='submit' name='loguj' value='loguj'>Zaloguj</buton></td>
+			<td colspan='2'><button style='float: right;' type='submit' name='loguj' value='loguj'>Zaloguj</button><input type='reset' value='Wyczyść' style='float: right; margin-right: 1px;' /></td>
 		</tr>";
 
 	echo "</table></form>"; 
