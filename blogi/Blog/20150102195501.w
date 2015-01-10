@@ -1,0 +1,1 @@
+Wpis by blok

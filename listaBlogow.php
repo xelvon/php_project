@@ -1,5 +1,7 @@
 <?php
 include 'goraStrony.php';
+echo '<body onload="zmienStyle();">
+        <div id="main_holder">';
 
 echo "<div id='tytul'>
         	Lista założonych blogów
@@ -13,7 +15,7 @@ $lista = scandir("blogi/");
 $indeks = 0;
 foreach($lista as $key=>$value){
     if($key > 1){
-        $file = file("blogi/$value/info.txt");
+        $file = file("blogi/$value/info");
         $blog[$indeks]['nazwa'] = $value;
         $blog[$indeks++]['owner'] = trim($file[0]);
     }

@@ -1,7 +1,9 @@
 <?php
 include 'goraStrony.php';
+echo '<body onload="zmienStyle();">
+        <div id="main_holder">';
     
-    $file = file("blogi/".$_GET['blog']."/info.txt");
+    $file = file("blogi/".$_GET['blog']."/info");
     var_dump($_SESSION['nazwa_bloga']);
     $owner = trim($file[0]);
     for($i=2;$i<count($file);$i++)
@@ -74,11 +76,16 @@ if($_POST['opis'] == ""){
     $numer = count($list) - 1;
     
     $file = fopen("blogi/$nazwa_bloga/$nazwa_wpisu.k/$numer.txt", "w");
-    
-    fwrite($file,$rodzaj_komentarza."\r\n");
-    fwrite($file,date('Y-m-d H:i:s')."\r\n");
-    fwrite($file,$autor."\r\n");
-    fwrite($file,$opis);
+    if (flock($file, LOCK_EX)){
+        fwrite($file,$rodzaj_komentarza."\r\n");
+        fwrite($file,date('Y-m-d H:i:s')."\r\n");
+        fwrite($file,$autor."\r\n");
+        fwrite($file,$opis);
+        flock($file, LOCK_UN);
+    }else{
+        echo "Wystąpiły problemy z blokadą pliku...";
+    }
+    fclose($file);
     
     header("Location: blog.php?nazwa=".$_SESSION['nazwa_bloga']);
 }

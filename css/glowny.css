@@ -60,11 +60,19 @@ body{
     width: 80%;
     float: right;
     padding: 10px;
-    background: url('../img/blue_background.jpg');
+    background: url('../img/blue_background.jpg') fixed no-repeat;
     margin-bottom: 15px;
     position: relative;
 }
-
+#lista_styli{
+    position:fixed;
+    right: 0;
+    background: url('../img/red_background.jpg');
+    width: 190px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    height: 100px;
+}
 #opis_bloga{
     font-family: cursive;
     margin: 0 auto;
@@ -157,7 +165,7 @@ border-radius: 3px;
 cursor: pointer;
 text-decoration: none;
 color: white;
-margin-left: 65%;
+margin-left: 60%;
 }
 
 a#dodaj_wpis:hover, a#dodaj_komentarz:hover{

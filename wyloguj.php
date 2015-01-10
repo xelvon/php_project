@@ -1,5 +1,7 @@
 <?php
 include 'goraStrony.php';
+echo '<body onload="zmienStyle();">
+        <div id="main_holder">';
 
 echo "<div id='tytul'>
         	Wylogowywanie

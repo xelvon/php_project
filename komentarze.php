@@ -1,7 +1,9 @@
 <?php
 include 'goraStrony.php';
+echo '<body onload="zmienStyle();">
+        <div id="main_holder">';
     
-    $file = file("blogi/".$_GET['blog']."/info.txt");
+    $file = file("blogi/".$_GET['blog']."/info");
     $owner = trim($file[0]);
     for($i=2;$i<count($file);$i++)
         if($i == 2)

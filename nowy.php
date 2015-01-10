@@ -1,5 +1,7 @@
 <?php
 include 'goraStrony.php';
+echo '<body onload="zmienStyle();">
+        <div id="main_holder">';
 
 echo "<div id='tytul'>
         	Zakładanie nowego bloga
@@ -9,8 +11,8 @@ include 'zakladki.php';
 
 echo "<div id='tresc'>";
 
-if($_GET['zapisz'] == ""){
-	echo "<br/><form action='' method='get'>
+if($_POST['zapisz'] == ""){
+	echo "<br/><form action='' method='post'>
 		<table>
 		<tr>
 			<td colspan='2'>Załóż nowego bloga</td>
@@ -33,11 +35,10 @@ if($_GET['zapisz'] == ""){
 
 	echo "</table></form>"; 
 }else{
-        
-	$nazwa = $_GET['nazwa_bloga'];
-	$login = $_GET['login'];
-	$haslo = $_GET['haslo'];
-        $opis  = $_GET['opis'];
+	$nazwa = $_POST['nazwa_bloga'];
+	$login = $_POST['login'];
+	$haslo = $_POST['haslo'];
+        $opis  = $_POST['opis'];
         
         $checkFile = file("users.txt");
         $loginIstnieje = false;
@@ -55,14 +56,22 @@ if($_GET['zapisz'] == ""){
                     if(mkdir("blogi/$nazwa"))
                             echo "Blog o nazwie ".$nazwa." został założony pomyślnie!";
                     
-                    $file = fopen("blogi/$nazwa/info.txt", "w");
+                    $file = fopen("blogi/$nazwa/info", "w");
                     $file2 = fopen("users.txt", "a");
                     
-                    fwrite($file,$login."\r\n");
-                    fwrite($file,md5($haslo)."\r\n");
-                    fwrite($file,$opis);
-                    
-                    fwrite($file2,$login."\r\n");
+                    if (flock($file, LOCK_EX) && flock($file2, LOCK_EX)){
+                        fwrite($file,$login."\r\n");
+                        fwrite($file,md5($haslo)."\r\n");
+                        fwrite($file,$opis);
+
+                        fwrite($file2,$login."\r\n");
+                        flock($file, LOCK_UN);
+                        flock($file2, LOCK_UN);
+                    }else{
+                        echo "Wystąpiły problemy z blokadą pliku...";
+                    }
+                    fclose($file);
+                    fclose($file2);
             }else
                 echo "Blog o nazwie ".$nazwa." już istnieje";
         }elseif($loginIstnieje){

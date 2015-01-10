@@ -1,5 +1,7 @@
 <?php
 include 'goraStrony.php';
+echo '<body onload="zmienStyle();">
+        <div id="main_holder">';
 
 echo "<div id='tytul'>
         	Logowaie
@@ -34,7 +36,7 @@ if($_POST['login'] == "" && $_POST['haslo'] == ""){
     $lista = scandir("blogi/");
     foreach($lista as $key=>$value){
         if($key > 1){
-            $file = file("blogi/$value/info.txt");
+            $file = file("blogi/$value/info");
             if(trim($file[0]) == $login){
                 $nazwaBloga = $value;
                 $wlascicielBloga = trim($file[0]);
@@ -44,7 +46,7 @@ if($_POST['login'] == "" && $_POST['haslo'] == ""){
         }
     }
     
-    $file = file("blogi/$nazwaBloga/info.txt");
+    $file = file("blogi/$nazwaBloga/info");
     
     if($wlascicielBloga == $login && $hasloBloga == $haslo){
         echo "Zalogowano się pomyślnie do systemu!";
