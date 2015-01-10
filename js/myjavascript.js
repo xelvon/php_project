@@ -38,8 +38,8 @@ function sprawdzDate(data) {
   if ( (!(rok % 4) && rok % 100) || !(rok % 400)) {
     dniMiesiaca[1] = 29;
   }
-  
-  return dzien <= dniMiesiaca[--miesiac];
+  var czyDobraData = (dzien <= dniMiesiaca[--miesiac]) && (dzien > 0) && (rok >0);
+  return czyDobraData;
 }
 
 function sprawdzGodzine(godzina){
