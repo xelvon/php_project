@@ -49,26 +49,30 @@ function sprawdzGodzine(godzina){
 }
 
 function formValidator(){
-        var przycisk = document.getElementsByName("zapisz")[0];
+        var godzina_input = document.getElementsByName("godzina")[0];
+        var data_input = document.getElementsByName("data")[0];
         var przycisk2 = document.getElementsByName("dodaj_plik")[0];
         
         ustawDate();
         ustawGodzine();
         
-        przycisk.onclick = function(){
+        data_input.onchange = function(){
             var data = document.getElementsByName("data")[0].value;
-            var godzina = document.getElementsByName("godzina")[0].value;
             if(!sprawdzDate(data)){
                 alert('Podano nieprawidłową datę!');
                 ustawDate();
                 return false;
             }
+        };
+        godzina_input.onchange = function(){
+            var godzina = document.getElementsByName("godzina")[0].value;
             if(!sprawdzGodzine(godzina)){
                 alert('Podano nieprawidłową godzinę!');
                 ustawGodzine();
                 return false;
             }
-        }
+            
+        };
         przycisk2.onclick = function(){
             var tabela = document.getElementById("form_table");
             var iloscWierszy = tabela.rows.length;
@@ -76,6 +80,6 @@ function formValidator(){
             var komorka1 = wstawianyWiersz.insertCell(0);
             var komorka2 = wstawianyWiersz.insertCell(1);
             komorka1.innerHTML = iloscWierszy-8;
-            komorka2.innerHTML = "<input type='file' name='file"+(iloscWierszy-8)+"'/>"
+            komorka2.innerHTML = "<input type='file' name='file"+(iloscWierszy-8)+"'/>";
         };
 };
