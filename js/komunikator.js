@@ -18,7 +18,7 @@ function aktywujKomunikator(){
 
 function wyslijWiadomosc(xmlhttp){
     var wiadomosc =  encodeURIComponent(document.getElementsByName('tresc')[0].value);
-    var nick = document.getElementsByName('nick')[0].value;
+    var nick = encodeURIComponent(document.getElementsByName('nick')[0].value);
     if (nick != "" && wiadomosc != ""){
         xmlhttp.open("POST","komunikatorWyslijWiadomosc.php",true);
         xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
