@@ -17,7 +17,7 @@ function aktywujKomunikator(){
 }
 
 function wyslijWiadomosc(xmlhttp){
-    var wiadomosc = document.getElementsByName('tresc')[0].value;
+    var wiadomosc =  encodeURIComponent(document.getElementsByName('tresc')[0].value);
     var nick = document.getElementsByName('nick')[0].value;
     if (nick != "" && wiadomosc != ""){
         xmlhttp.open("POST","komunikatorWyslijWiadomosc.php",true);
@@ -63,7 +63,7 @@ function getXMLObject(){
 }
 
 function komunikator(){
-    var przerwa = 2000;
+    var przerwa = 1000;
     var checkbox = document.getElementsByName('aktywator')[0];
     var przycisk = document.getElementsByName('wyslij')[0];
     var xmlhttp = new getXMLObject(); 
