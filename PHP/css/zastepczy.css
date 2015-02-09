@@ -1,0 +1,154 @@
+body{
+    background: url('http://cdn.desktopwallpapers4.me/wallpapers/abstract/1280x800/3/21219-grey-texture-1280x800-abstract-wallpaper.jpg');
+}
+
+.page1, .page2, .page3, .page4{
+    width: 90%;
+    height: 600px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#tytul{
+    border-radius: 5px;
+    border: 2px solid black;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    background: url('http://cdn01.wallconvert.com/_media/wallpapers_1366x768/1/2/green-floral-texture-16850.jpg');
+    margin-bottom: 15px;
+}
+
+#menu{
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 100%;
+    background: url('http://cdn01.wallconvert.com/_media/wallpapers_1366x768/1/2/green-floral-texture-16850.jpg');
+    float: left;
+    top: 75px;
+    margin-bottom: 10px;
+}
+#menu > .odnosniki > a{
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 1px;
+    padding-left: 5px;
+    height: 28px;
+    border-radius: 5px;
+    color: white;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHJAGwH7rqpoF6OVoEpJnl63pI6QJSiJ_IsSeCQVhOtvy5tJQ2');
+}
+#menu > .odnosniki > a:hover{
+    background: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTcBP6FrJBq92kTmD2SjUnNnW_CulCaGA1Dhhjp7ERJotcalH2X');
+    color: black;
+}
+#tresc{
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 100%;
+    float: right;
+    background: url('http://p1.pichost.me/i/33/1559110.jpg');
+    margin-bottom: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: blue;
+}
+a:hover{
+    text-decoration: underline;
+    color: white;
+    cursor: default;
+}
+p::first-letter{
+    font-size: 25px;
+}
+
+.page1 > #tresc > #a1 + p{
+	color: grey;
+    	font-family: "Times New Roman", Times, serif;
+}
+.page1 > #tresc > #a2 + p{
+	color: red;
+    	font-family: "Verdena", Arial, sans-serif;
+}
+.page1 > #tresc > #a3 + p{
+	color: yellow;
+    	font-family: "Courier New", Lucida Console, monospace;
+    	letter-spacing: 2px;
+}
+
+.page1 > #tresc > p{
+    	text-indent: 2em;
+} 
+
+.page2 > #tresc > table{
+	background-color: yellow;
+        border-collapse: collapse;
+        margin-left: 45%;
+}
+
+.page2 > #tresc > table > tbody > tr > td, .page2 > #tresc > table > tfoot > tr > td, .page2 > #tresc > table > thead > tr > td {
+	border: 2px solid black;
+        text-align: center; 
+        vertical-align: middle;
+}
+.page2 > #tresc > table > tfoot > tr > td{
+    background-color: lightgreen;
+}
+
+.page2 > #tresc > table > thead > tr > td{
+    background-color: lightcoral;
+    text-transform: uppercase;
+}
+
+.page2 > #tresc > table > tbody > tr > td:first-child{
+    background-color: grey;
+}
+
+.page2 > #tresc > table > :not(thead){
+    font-family: "Courier New", Lucida Console, monospace;
+}
+
+.page3 > #tresc > ul{
+    list-style-type: upper-roman;
+}
+.page3 > #tresc > ul > li > ul{
+    list-style-type: lower-roman;
+}
+.page3 > #tresc > ul > li > ul > li > ul{
+    list-style-type: lower-greek;
+}
+
+.page4 > #tresc > img:first-of-type{
+    position: relative;
+    float: right;
+}
+.page4 > #tresc > img:nth-of-type(2){
+    position: relative;
+    float: left;
+    margin-top: 125px;
+}
+
+#footer > a{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#footer > a:first-of-type{
+}
+
+#footer{
+    width: 100%;
+    float: right;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
+    border: 2px solid black;
+    height: 50px;
+    background: url('http://cdn01.wallconvert.com/_media/wallpapers_1366x768/1/2/green-floral-texture-16850.jpg');
+    clear: both;
+}
